@@ -40,37 +40,10 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             }
 
-            // Close mobile menu if open
-            const mobileMenu = document.getElementById('mobile-menu');
-            if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
-                mobileMenu.classList.add('hidden');
-            }
+            // Re-evaluating active offsets and close states for anchor links natively
+            // (Previously mobile menu close block was here, now handled natively via scrolling nav)
         });
     });
-
-    // 3. Mobile Menu Logic (Perfect Run)
-    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.nav-link-mobile');
-
-    if (mobileMenuBtn && mobileMenu) {
-        mobileMenuBtn.addEventListener('click', () => {
-            const isActive = mobileMenu.classList.toggle('active');
-            mobileMenuBtn.classList.toggle('active');
-
-            // Lock background scroll when menu is active
-            document.body.style.overflow = isActive ? 'hidden' : 'auto';
-        });
-
-        // Close menu when a link is clicked
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                mobileMenuBtn.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
-        });
-    }
 
     // 4. Optimized Background & Nav Scroll Handling
     let lastScrollY = window.pageYOffset;
